@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./cards/card-style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header></header>
+    <main class="container flex-grow-1">
+        <div class="d-flex justify-content-center gap-2 mb-4">
+            <button id="btn-all" class="btn btn-primary px-4 fw-bold shadow-sm" onclick="filter('todas')">Todas</button>
+            <button id="btn-vocals" class="btn btn-outline-primary px-4 fw-bold shadow-sm" onclick="filter('vocales')">Vocales</button>
+        </div>
+            <section class="row g-3" id="galery"></section>
+    </main>
+    <footer></footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="./cards/cards.js"></script>
+</body>
+</html>

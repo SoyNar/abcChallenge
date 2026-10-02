@@ -1,34 +1,50 @@
-let letrasVistas = 0; //inicializamos contador de letras vistas
-const contador = document.getElementById("contador"); // obtenemos el elemento del contador en el DOM
-const vocales = []; //inicializamos array para guardar las vocales filtradad
-//funcion volterar card
-function voltear(card) { // declaramos la funcion voltear que recibe un parametro card
-    card.classList.toggle("volteada"); // usamos toggle como interruptor, y classList para agregar o quitar la clase "volteada" al elemento card
+let letrasVistas = 0; // inicializamos el contador de letras vistas
 
-    if(card.classList.contains("vista")) { // validamos si tiene la clase "vista"
-    } else {// si no tiene la clase "vista"
-        letrasVistas++; // incrementamos el contador de letras vistas
-        card.classList.add("vista"); // agregamos la clase "vista" esto hace que no se cuente de nuevo la misma letra   
-        contador.textContent = letrasVistas; // actualizamos el contador en el DOM con el valor de letrasVistas
+const contador = document.getElementById("contador"); // obtenemos el elemento del contador en el DOM
+
+
+// Función para voltear la tarjeta
+function flipCard(card) {
+
+    card.classList.toggle("flipped"); // agregamos o quitamos la clase "flipped"
+
+    if (card.classList.contains("vista")) {
+
+    } else {
+
+        letrasVistas++; // incrementamos el contador
+
+        card.classList.add("vista"); // marcamos la tarjeta como vista
+
+        contador.textContent = letrasVistas; // actualizamos el contador en el DOM
     }
 }
 
-function filtrar(filtro){ // delcaramos la funcion filtrar
-    const cards = document.getElementsByClassName("card"); // obtenemos todos los elementos con la clase "card"
-    for (let i=0; i<cards.length; i++){ // recorremos todos los elementos con la clase "card"
-        const card = cards[i]; // obtenemos la tarjeta que esta en i
-        if (filtro === "vocales") { // validamos si el filtro seleccionado es "vocales"
-         if(card.dataset.tipo === "vocal"){ // validamos si el atributo data-tipo del elemento card es igual a "vocal"
-           card.hidden = false; // si es igual a "vocal" mostramos el elemento card
-            }else{
-                card.hidden = true; // si no es igual a "vocal" ocultamos el elemento card con la propiedad hidden
+
+// Función para filtrar las tarjetas
+function filter(filtro) {
+
+    const cards = document.getElementsByClassName("item-card"); // obtenemos todas las tarjetas
+
+    for (let i = 0; i < cards.length; i++) {
+
+        const card = cards[i]; // obtenemos la tarjeta actual
+
+        if (filtro === "vocales") {
+
+            if (card.dataset.tipo === "vocal") {
+
+                card.hidden = false; // mostramos la tarjeta
+
+            } else {
+
+                card.hidden = true; // ocultamos la tarjeta
             }
-         } else if (filtro === "todas") { // validamos si el filtro seleccionado es "todas"
-            card.hidden = false; // mostramos el elemento card sin 
-         }
+
+        } else if (filtro === "todas") {
+
+            card.hidden = false; // mostramos todas las tarjetas
+        }
     }
-
-  }
-
-
+}
 

@@ -266,3 +266,30 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* caras de la carta */
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  padding: 1rem;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-custom {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, filter 0.3s ease;
+}
+
+/* carta volteada: gira y hace zoom */
+.card-custom.flipped {
+  transform: rotateY(180deg) scale(1.3);
+  z-index: 10;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* las demás se desenfocan mientras haya una volteada */
+#galery:has(.flipped) .card-custom:not(.flipped) {
+  filter: blur(4px);
+  opacity: 0.7;
+}

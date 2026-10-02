@@ -1,7 +1,4 @@
-javascript
 let letrasVistas = 0; // inicializamos el contador de letras vistas
-
-const contador = document.getElementById("contador"); // obtenemos el elemento del contador en el DOM
 
 
 // Función para voltear la tarjeta
@@ -15,7 +12,8 @@ function flipCard(card) {
 
         card.classList.add("vista"); // marcamos la tarjeta como vista
 
-        contador.textContent = letrasVistas; // actualizamos el contador en el DOM
+        const contador = document.getElementById("contador");
+        contador.textContent = letrasVistas; // actualizamos el contador
     }
 }
 
@@ -23,26 +21,26 @@ function flipCard(card) {
 // Función para filtrar las tarjetas
 function filter(filtro) {
 
-    const cards = document.getElementsByClassName("item-card"); // obtenemos todas las tarjetas
+    const cards = document.getElementsByClassName("item-card");
 
     for (let i = 0; i < cards.length; i++) {
 
-        const card = cards[i]; // obtenemos la tarjeta actual
+        const card = cards[i];
 
         if (filtro === "vocales") {
 
             if (card.dataset.tipo === "vocal") {
 
-                card.hidden = false; // mostramos la tarjeta
+                card.hidden = false;
 
             } else {
 
-                card.hidden = true; // ocultamos la tarjeta
+                card.hidden = true;
             }
 
         } else if (filtro === "todas") {
 
-            card.hidden = false; // mostramos todas las tarjetas
+            card.hidden = false;
         }
     }
 }
@@ -52,7 +50,9 @@ function filter(filtro) {
 fetch("navbar.html")
     .then((response) => response.text())
     .then((data) => {
+
         document.getElementById("navbar").innerHTML = data;
+
     });
 
 
@@ -60,6 +60,7 @@ fetch("navbar.html")
 fetch("footer.html")
     .then((response) => response.text())
     .then((data) => {
-        document.getElementById("footer").innerHTML = data;
-    });
 
+        document.getElementById("footer").innerHTML = data;
+
+    });

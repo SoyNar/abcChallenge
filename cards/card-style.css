@@ -46,3 +46,127 @@ position: absolute;
 .card-back {
   transform: rotateY(180deg);
 }
+
+#galery {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+  #galery > .item-card {
+    width: 25%;
+  }
+}
+
+.card-custom {
+  min-height: 200px;
+  max-width: 190px;
+  margin: 0 auto;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* volteada zoom suave */
+.card-custom.flipped,
+.card-custom.flipped:hover {
+  transform: rotateY(180deg) scale(1.12);
+  z-index: 10;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* blur y sin clic,  */
+#galery:has(.flipped) .card-custom:not(.flipped) {
+  filter: blur(5px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+
+.card-custom.bg-pink   { background-color: var(--rosa) !important; }
+.card-custom.bg-cyan   { background-color: var(--azul) !important; }
+.card-custom.bg-yellow { background-color: var(--amarillo) !important; }
+
+.card-front h1 {
+  font-size: 4rem;
+}
+
+.card-custom.bg-yellow .card-front h1 {
+  color: var(--oscuro) !important;
+}
+
+
+.card-back {
+  background-color: var(--blanco);
+  border: 4px solid var(--azul);
+}
+
+.card-back h3 {
+  color: var(--oscuro) !important;
+}
+
+/* footer  */
+#footer > * {
+  background-color: var(--celeste) !important;
+}
+
+#footer,
+#footer * {
+  color: var(--blanco) !important;
+}
+
+#footer hr {
+  border-color: var(--blanco) !important;
+  opacity: 0.3;
+}
+
+/* navbar  */
+header .navbar {
+  background-color: var(--celeste) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+header .navbar,
+header .navbar * {
+  color: var(--blanco) !important;
+}
+
+/* contador  */
+#contador {
+  background-color: var(--amarillo) !important;
+}
+
+/* espacio entre el navbar y los botones */
+main.container {
+  padding-top: 2.5rem;
+}
+
+/* botones de filtro  */
+#btn-all,
+#btn-vocals {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 999px;
+  background-color: var(--amarillo);
+  color: var(--oscuro);
+  font-size: 1rem;
+  font-weight: 800;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+#btn-all:hover,
+#btn-vocals:hover {
+  transform: translateY(-3px);
+  background-color: var(--rosa);
+  color: var(--oscuro);
+}
+
+/* la carta volteada manda siempre, haya hover o no */
+.card-custom.flipped,
+.card-custom.flipped:hover {
+  transform: rotateY(180deg) scale(1.12) !important;
+}
+
+/* el hover solo aplica a las que no están volteadas */
+.card-custom:not(.flipped):hover {
+  transform: translateY(-5px);
+}

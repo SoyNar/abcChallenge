@@ -1,0 +1,295 @@
+/* ==========================================================
+   ABC Challenge - style.css
+   Paleta pastel inspirada en el diseño de referencia
+   ========================================================== */
+
+:root {
+  --rosa: #f8a5c2;
+  --azul: #4fb0e0;
+  --amarillo: #ffc95c;
+  --oscuro: #2b2d5b;
+  --blanco: #ffffff;
+  --celeste: #7dd3f5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ---------- Base ---------- */
+body {
+  margin: 0;
+  font-family: "Nunito", "Segoe UI", Arial, sans-serif;
+  background-color: #f2f2f2;      /* fondo gris */
+  color: var(--oscuro);
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 32px;
+  background-color: var(--celeste);
+  color: var(--blanco);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.navbar h1,
+.navbar .logo {
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+}
+
+#contador {
+  display: inline-block;
+  min-width: 32px;
+  padding: 4px 12px;
+  margin-left: 6px;
+  border-radius: 999px;
+  background-color: var(--amarillo);
+  color: var(--oscuro);
+  font-weight: 800;
+  text-align: center;
+}
+
+/* ---------- Botones de filtro ---------- */
+.filtros {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 32px 20px 8px;
+}
+
+.filtros button,
+.btn-filtro {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 999px;
+  background-color: var(--amarillo);
+  color: var(--oscuro);
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.filtros button:hover,
+.btn-filtro:hover {
+  transform: translateY(-3px);
+  background-color: var(--rosa);
+}
+
+/* ---------- Galería ---------- */
+.galeria,
+.contenedor {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);   /* 4 cartas por fila */
+  gap: 32px;
+  padding: 40px 24px 70px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ---------- Tarjetas ---------- */
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;            /* proporción vertical, se adapta a la columna */
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease, filter 0.4s ease, opacity 0.4s ease;
+}
+
+.card-frente,
+.card-dorso {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  text-align: center;
+  border-radius: 24px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* Frente: colores rotando rosa / azul / amarillo */
+.card-frente {
+  background-color: var(--rosa);
+  color: var(--blanco);
+}
+
+.card:nth-child(3n + 2) .card-frente {
+  background-color: var(--azul);
+}
+
+.card:nth-child(3n) .card-frente {
+  background-color: var(--amarillo);
+  color: var(--oscuro);
+}
+
+.card-frente h1 {
+  margin: 0;
+  font-size: clamp(4rem, 10vw, 7.5rem);
+  line-height: 1;
+}
+
+/* Dorso: gira 180° para quedar oculto al inicio */
+.card-dorso {
+  background-color: var(--blanco);
+  border: 4px solid var(--azul);
+  transform: rotateY(180deg);
+}
+
+.card-dorso img {
+  width: 100%;
+  height: 62%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.card-dorso h3 {
+  margin: 10px 0 0;
+  font-size: 1.1rem;
+}
+
+/* Hover suave solo en tarjetas sin voltear */
+.card:not(.volteada):hover {
+  transform: translateY(-6px);
+}
+
+/* ---------- Efecto flip + zoom ---------- */
+.card.volteada {
+  transform: rotateY(180deg) scale(1.3);
+  z-index: 10;
+}
+
+/* ---------- Efecto blur en las demás ---------- */
+/* Si hay alguna tarjeta volteada, las otras se desenfocan */
+body:has(.card.volteada) .card:not(.volteada) {
+  filter: blur(5px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ---------- Sección del equipo ---------- */
+.equipo {
+  padding: 50px 24px 70px;
+  text-align: center;
+  background-color: var(--celeste);
+  color: var(--blanco);
+}
+
+.equipo h2 {
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.equipo ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.equipo li {
+  padding: 12px 24px;
+  border-radius: 999px;
+  background-color: var(--rosa);
+  color: var(--oscuro);
+  font-weight: 800;
+}
+
+.equipo li:nth-child(3n + 2) {
+  background-color: var(--blanco);
+}
+
+.equipo li:nth-child(3n) {
+  background-color: var(--amarillo);
+}
+
+/* ---------- Requisitos de la rúbrica (Tarea 2) ---------- */
+h3 {
+  color: green;                   /* todos los h3 verdes */
+}
+
+.azul {
+  color: blue;                    /* clase para aplicar azul a tres h3 */
+}
+
+#rojo {
+  color: red;                     /* un h3 en rojo */
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .navbar h1,
+  .navbar .logo {
+    font-size: 1.2rem;
+  }
+
+  .galeria,
+  .contenedor {
+    gap: 16px;
+    padding: 24px 14px 50px;
+  }
+
+  .card-dorso h3 {
+    font-size: 0.85rem;
+  }
+
+  .card.volteada {
+    transform: rotateY(180deg) scale(1.2);
+  }
+}
+
+/* En celulares pequeños: 2 cartas por fila */
+@media (max-width: 480px) {
+  .galeria,
+  .contenedor {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* caras de la carta */
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  padding: 1rem;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-custom {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, filter 0.3s ease;
+}
+
+/* carta volteada: gira y hace zoom */
+.card-custom.flipped {
+  transform: rotateY(180deg) scale(1.3);
+  z-index: 10;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* las demás se desenfocan mientras haya una volteada */
+#galery:has(.flipped) .card-custom:not(.flipped) {
+  filter: blur(4px);
+  opacity: 0.7;
+}

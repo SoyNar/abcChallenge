@@ -48,3 +48,19 @@ function filter(filtro) {
     }
 }
 
+
+// Cargamos el navbar
+fetch("navbar.html")
+    .then((response) => response.text())
+    .then((data) => {
+        document.getElementById("navbar").innerHTML = data;
+    });
+
+
+// Cargamos el footer
+fetch("footer.html")
+    .then((response) => response.text())
+    .then((data) => {
+        document.getElementById("footer").innerHTML = data;
+    });
+

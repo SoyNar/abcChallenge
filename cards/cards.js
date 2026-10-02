@@ -63,7 +63,7 @@ function renderCards() {
 
     galery.innerHTML = html;
 }
-// function flipCard(cardElement) {
-//   cardElement.classList.toggle('flipped');
-// }
+function flipCard(cardElement) {
+  cardElement.classList.toggle('flipped');
+}
 document.addEventListener('DOMContentLoaded', renderCards);

@@ -27,12 +27,19 @@
 
 /* Giro cuando tiene la clase .volteada */
 .card-custom.flipped {
+transform: rotateY(180deg) translateY(-5px);
 }
 
 /* Configuración de Caras (Frente y Dorso) */
 .card-front, 
 .card-back {
- 
+position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: inherit;
 }
 
 /* El dorso inicia girado para que quede oculto por defecto */
